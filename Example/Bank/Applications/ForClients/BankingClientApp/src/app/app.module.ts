@@ -10,6 +10,7 @@ import { TemplateViewLoginComponent } from './views/template-view-login/template
 import { SharedComponentsModule } from './shared-components/shared-components.module';
 import { LoginViewComponent } from './views/login-view/login-view.component';
 import { AccountsViewComponent } from './views/accounts-view/accounts-view.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { AccountsViewComponent } from './views/accounts-view/accounts-view.compo
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
