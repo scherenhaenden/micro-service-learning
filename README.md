@@ -23,3 +23,10 @@ npm install
 ng serve
 
 ```
+
+or 
+    
+    ```bash
+
+    cd Example/Bank/Applications/ForClients/BankingClientApp/ && ng serve
+    ```
