@@ -11,7 +11,8 @@ import { SharedComponentsModule } from './shared-components/shared-components.mo
 import { LoginViewComponent } from './views/login-view/login-view.component';
 import { AccountsViewComponent } from './views/accounts-view/accounts-view.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptorService } from './services/security/jwt-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,13 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptorService,
+    multi: true
+  }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

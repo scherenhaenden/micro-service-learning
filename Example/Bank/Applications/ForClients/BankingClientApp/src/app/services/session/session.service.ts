@@ -18,6 +18,11 @@ export class SessionService {
     return this.tokenAuthenticationServiceService.validateTokenAndSetTokenInLocalStorage(token);
   }
 
+  // Get token from local storage
+  public getToken(): string | undefined {
+    return localStorage.getItem('token') as string| undefined;
+  }
+
 
   // Create method that gets user email from local storage
   public getSessionEmail(): string| undefined {
