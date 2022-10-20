@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { LoginService } from 'src/app/services/api/login/login.service';
 
 @Component({
   selector: 'app-login-view',
@@ -8,7 +9,9 @@ import { FormBuilder } from '@angular/forms';
 })
 export class LoginViewComponent implements OnInit {
 
-  constructor( private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private loginService: LoginService) { }
 
   public checkoutForm = this.formBuilder.group({
     email: '',
@@ -44,22 +47,22 @@ export class LoginViewComponent implements OnInit {
 
 
   public onSubmit(): void {
-    // Process checkout data here
-    console.warn('Your order has been submitted', this.checkoutForm);
-
-    // Get value from control in form
-    console.log('this.checkoutForm.get(\'email\')?.value: ', this.checkoutForm.get('email')?.value);
 
     // Store in local storage for now (until we have a database)
 
     const email = this.checkoutForm.get('email')?.value;
+    const password = this.checkoutForm.get('password')?.value;
 
-    if(email != null && email != undefined) {
-      localStorage.setItem('email', email);
+    if(email != null && email != undefined && password != null && password != undefined) {
+      this.loginService.login(email, password);/*.subscribe((response: any) => {
+        console.log('response: ', response);
+      });*/
     }
 
+
+
     // go to accounts page
-    window.location.href = '/accounts';
+    //window.location.href = '/accounts';
 
 
 

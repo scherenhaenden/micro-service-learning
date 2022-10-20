@@ -1,4 +1,4 @@
-namespace SaladBarBackEnd.EnviromentConfigs;
+namespace BankingClientBackend.EnviromentConfigs;
 
 public class AppSettings
 {

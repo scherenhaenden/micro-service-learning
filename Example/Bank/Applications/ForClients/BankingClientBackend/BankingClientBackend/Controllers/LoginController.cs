@@ -1,7 +1,8 @@
 using BankingClientBackend.Services.Middlewares.JWT;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SaladBarBackEnd.Controllers;
+namespace BankingClientBackend.Controllers;
 
 [ApiController]
 [Route("[controller]")]
@@ -14,6 +15,7 @@ public class LoginController : Controller
         _userService = userService;
     }
 
+    [AllowAnonymous]
     [HttpPost("authenticate")]
     public IActionResult Authenticate(AuthenticateRequest model)
     {
@@ -25,7 +27,7 @@ public class LoginController : Controller
         return Ok(response);
     }
 
-    [Authorize]
+    [BankingClientBackend.Services.Middlewares.JWT.Authorize]
     [HttpGet]
     public IActionResult GetAll()
     {

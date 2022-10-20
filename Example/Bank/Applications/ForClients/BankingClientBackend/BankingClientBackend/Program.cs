@@ -1,10 +1,12 @@
+using BankingClientBackend.EnviromentConfigs;
+using BankingClientBackend.Services.Middlewares.Cors;
 using BankingClientBackend.Services.Middlewares.JWT;
-using SaladBarBackEnd.EnviromentConfigs;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
+builder.Services.AddCors();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -16,6 +18,8 @@ var appSettings = builder.Configuration.GetSection("AppSettings");
 builder.Services.Configure<AppSettings>(appSettings);
 
 builder.Services.AddScoped<IUserService, UserService>();
+
+
 
 var app = builder.Build();
 
@@ -29,11 +33,16 @@ if (app.Environment.IsDevelopment())
         .SetIsOriginAllowed((host) => true)
         .AllowCredentials()
     );
+    app.UseCorsMiddleware();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    app.UseHttpsRedirection();
+}
 
-app.UseHttpsRedirection();
+
 
 app.UseAuthorization();
 

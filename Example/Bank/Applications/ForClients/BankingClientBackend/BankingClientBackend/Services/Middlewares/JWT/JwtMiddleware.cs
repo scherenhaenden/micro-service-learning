@@ -3,11 +3,11 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json.Serialization;
+using BankingClientBackend.EnviromentConfigs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using SaladBarBackEnd.EnviromentConfigs;
 
 namespace BankingClientBackend.Services.Middlewares.JWT;
 
