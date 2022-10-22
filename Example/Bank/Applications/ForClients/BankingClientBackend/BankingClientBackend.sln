@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend", "BankingClientBackend\BankingClientBackend.csproj", "{546961B5-2996-4F0B-A75F-675572BA1E7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend.Nunit.Tests", "BankingClientBackend.Nunit.Tests\BankingClientBackend.Nunit.Tests.csproj", "{04C578AB-3B31-41F1-B813-23C9474CA9A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{546961B5-2996-4F0B-A75F-675572BA1E7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{546961B5-2996-4F0B-A75F-675572BA1E7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{546961B5-2996-4F0B-A75F-675572BA1E7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04C578AB-3B31-41F1-B813-23C9474CA9A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04C578AB-3B31-41F1-B813-23C9474CA9A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04C578AB-3B31-41F1-B813-23C9474CA9A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04C578AB-3B31-41F1-B813-23C9474CA9A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
