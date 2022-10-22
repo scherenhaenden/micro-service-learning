@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { TokenAuthenticationServiceService } from '../security/token-authentication-service.service';
 
@@ -6,11 +7,13 @@ import { TokenAuthenticationServiceService } from '../security/token-authenticat
 })
 export class SessionService {
 
-  constructor(private tokenAuthenticationServiceService: TokenAuthenticationServiceService) { }
+  constructor(private tokenAuthenticationServiceService: TokenAuthenticationServiceService,
+    private router: Router) { }
 
   // Create method that checks if user is logged in
   public isLoggedIn(): boolean {
     return this.tokenAuthenticationServiceService.isTokenValid();
+
   }
 
   // Init session into app: Set token into local storage
@@ -34,6 +37,7 @@ export class SessionService {
   // Create method that logs user out by clearing local storage
   public clearUserSession(): void {
     localStorage.clear();
+    this.router.navigate(['/login']);
   }
 
   // Create method that stores user login info into local storage

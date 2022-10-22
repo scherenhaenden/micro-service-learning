@@ -1,3 +1,4 @@
+import { SessionService } from 'src/app/services/session/session.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountsViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sessionService: SessionService) { }
 
   ngOnInit(): void {
   }
+
+  // Create method that logs user out
+  public logout(): void {
+    this.sessionService.clearUserSession();
+  }
+
+
+
 
 }
