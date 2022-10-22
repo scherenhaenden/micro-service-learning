@@ -20,18 +20,22 @@ export class JwtInterceptorService {
         const token = this.sessionService.getToken();
 
 
+
         const isApiUrl = request.url.startsWith(environment.apiHost);
         if (isLogged && isApiUrl) {
             request = request.clone({
                 setHeaders: { Authorization: `Bearer ${token}` }
             });
+
         }
+        console.log('Request: ' + JSON.stringify(request));
 
         return next.handle(request).pipe(
           tap((response) => {
             if (response instanceof HttpResponse) {
               //this.cache.set(request.url, response);
               console.log('Response from server: ', response);
+              console.log('Response from server: ', response.headers);
             }
           })
         );

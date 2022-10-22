@@ -23,6 +23,8 @@ public class LoginController : Controller
 
         if (response == null)
             return BadRequest(new { message = "Username or password is incorrect" });
+        
+        HttpContext.Response.Headers.Add("Authorization", "Bearer " + response.Token);
 
         return Ok(response);
     }

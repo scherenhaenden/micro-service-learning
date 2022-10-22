@@ -42,7 +42,7 @@ else
     app.UseHttpsRedirection();
 }
 
-
+app.UseMiddleware<ReadAndResponseJWT>();
 
 app.UseAuthorization();
 
