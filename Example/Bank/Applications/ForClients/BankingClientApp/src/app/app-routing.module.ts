@@ -5,6 +5,7 @@ import { AccountsViewComponent } from './views/accounts-view/accounts-view.compo
 import { LoginViewComponent } from './views/login-view/login-view.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginViewComponent  },
   { path: 'accounts', component: AccountsViewComponent, canActivate: [AuthGuardService] },
   // add route that needs authentication
