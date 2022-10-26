@@ -1,4 +1,4 @@
-<body id="page-top">
+<ng-container id="page-top">
   <div id="wrapper">
     <app-main-side-bar></app-main-side-bar>
 
@@ -12,72 +12,8 @@
                       <h3 class="text-dark mb-0">Accounts</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                   </div>
                   <div class="row">
-                    <app-banking-account-cards class="col-md-6 col-xl-3 mb-4"></app-banking-account-cards>
-                    <app-banking-account-cards class="col-md-6 col-xl-3 mb-4"></app-banking-account-cards>
-                    <app-banking-account-cards class="col-md-6 col-xl-3 mb-4"></app-banking-account-cards>
-                    <app-banking-account-cards class="col-md-6 col-xl-3 mb-4"></app-banking-account-cards>
-
-                      <div class="col-md-6 col-xl-3 mb-4">
-                          <div class="card shadow border-start-primary py-2">
-                              <div class="card-body">
-                                  <div class="row align-items-center no-gutters">
-                                      <div class="col me-2">
-                                          <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Account 1</span></div>
-                                          <div class="text-dark fw-bold h5 mb-0"><span>$40,000</span></div>
-                                      </div>
-                                      <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-md-6 col-xl-3 mb-4">
-                          <div class="card shadow border-start-success py-2">
-                              <div class="card-body">
-                                  <div class="row align-items-center no-gutters">
-                                      <div class="col me-2">
-                                          <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>Account 2)</span></div>
-                                          <div class="text-dark fw-bold h5 mb-0"><span>$215,000</span></div>
-                                      </div>
-                                      <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-md-6 col-xl-3 mb-4">
-                          <div class="card shadow border-start-info py-2">
-                              <div class="card-body">
-                                  <div class="row align-items-center no-gutters">
-                                      <div class="col me-2">
-                                          <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>Account 3</span></div>
-                                          <div class="row g-0 align-items-center">
-                                              <div class="col-auto">
-                                                  <div class="text-dark fw-bold h5 mb-0 me-3"><span>50%</span></div>
-                                              </div>
-                                              <div class="col">
-                                                  <div class="progress progress-sm">
-                                                      <div class="progress-bar bg-info" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"><span class="visually-hidden">50%</span></div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-md-6 col-xl-3 mb-4">
-                          <div class="card shadow border-start-warning py-2">
-                              <div class="card-body">
-                                  <div class="row align-items-center no-gutters">
-                                      <div class="col me-2">
-                                          <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Account 4</span></div>
-                                          <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
-                                      </div>
-                                      <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+                    <app-banking-account-cards class="col-md-6 col-xl-3 mb-4"     *ngFor="let bankingAccount of accounts"
+                    [bankingAccountsSimple]="bankingAccount"></app-banking-account-cards>
                   </div>
               </div>
           </div>
@@ -88,4 +24,4 @@
           </footer>
       </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
   </div>
-</body>
+</ng-container>
