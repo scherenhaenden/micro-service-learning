@@ -36,22 +36,4 @@ export class TokenAuthenticationServiceService {
     }
     return true;
   }
-
-
-  // Create method that checks if token is valid
-  public isTokenValid(): boolean {
-    // Get token from local storage
-    const token = localStorage.getItem('token');
-
-    return this.isTokenValidByToken(token!);
-  }
-
-  // Create method that to validate token and when valid set token in local storage
-  public validateTokenAndSetTokenInLocalStorage(token: string): boolean {
-    if(this.isTokenValidByToken(token)) {
-      localStorage.setItem('token', token);
-      return true;
-    }
-    return false;
-  }
 }
