@@ -8,27 +8,29 @@ import { SessionService } from 'src/app/services/session/session.service';
 import { TokenAuthenticationServiceService } from 'src/app/services/security/token-authentication-service.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing'
+import { LoadingTestingModuleModule } from './loading-testing-module/loading-testing-module.module';
 
 describe('LoginViewComponent', () => {
   let component: LoginViewComponent;
   let fixture: ComponentFixture<LoginViewComponent>;
 
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ LoginViewComponent ],
       providers:  [
+        HttpClient,
         ApiBaseService,
         LoginService,
-        HttpClient,
+
+
+
         TokenAuthenticationServiceService,
         SessionService,
+        HttpClient,
         FormBuilder,
     ],
     imports: [
-      RouterTestingModule,
-      HttpClientTestingModule ,
-      HttpClientModule]
+      LoadingTestingModuleModule]
     })
     .compileComponents();
 
