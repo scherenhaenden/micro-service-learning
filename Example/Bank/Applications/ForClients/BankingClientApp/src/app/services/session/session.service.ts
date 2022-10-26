@@ -12,13 +12,22 @@ export class SessionService {
 
   // Create method that checks if user is logged in
   public isLoggedIn(): boolean {
-    return this.tokenAuthenticationServiceService.isTokenValid();
-
+    const isValid = this.tokenAuthenticationServiceService.isTokenValidByToken(this.getToken()!);
+    if(!isValid) {
+      this.clearUserSession();
+    }
+    return isValid;
   }
 
   // Init session into app: Set token into local storage
   public tryInitSession(token: string): boolean {
-    return this.tokenAuthenticationServiceService.validateTokenAndSetTokenInLocalStorage(token);
+
+    // if token is valid set token into local storage
+    if(this.tokenAuthenticationServiceService.isTokenValidByToken(token)) {
+      this.assignUserTokenInfo(token);
+      return true;
+    }
+    return false;
   }
 
   // Get token from local storage
