@@ -33,9 +33,10 @@ export class JwtInterceptorService {
         return next.handle(request).pipe(
           tap((response) => {
             if (response instanceof HttpResponse) {
-              //this.cache.set(request.url, response);
-              console.log('Response from server: ', response);
-              console.log('Response from server: ', response.headers);
+              // check if user is not logged in viy session service
+              if(!this.sessionService.isLoggedIn() && request.url?.includes('Login')) {
+                this.sessionService.tryInitSession(response.body.token);
+              }
             }
           })
         );

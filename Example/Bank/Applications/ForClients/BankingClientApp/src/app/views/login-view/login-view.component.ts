@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/api/login/login.service';
+import { SessionService } from 'src/app/services/session/session.service';
 
 @Component({
   selector: 'app-login-view',
@@ -11,7 +13,9 @@ export class LoginViewComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private loginService: LoginService) { }
+    private loginService: LoginService,
+    private sessionService: SessionService,
+    private router: Router) { }
 
   public checkoutForm = this.formBuilder.group({
     email: '',
@@ -20,16 +24,27 @@ export class LoginViewComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.goToDashboard();
+  }
+
+  // Check if user is logged in and if logged in than sent to accounts
+  public goToDashboard(): void {
+    // Check if user is logged in
+    const isLogged = this.sessionService.isLoggedIn();
+
+    if(isLogged) {
+      // Redirect to dashboard
+      //window.location.href = '/accounts';
+      // go to accounts using route
+      this.router.navigate(['/accounts']);
+
+    }
   }
 
   // Create method that checks if user is logged in
   public isLoggedIn(): boolean {
 
-    if(this.isValueInLocalStorage("")) {
-      return true;
-    }
-
-
+   this.sessionService.isLoggedIn()
 
     return false;
   }
@@ -46,26 +61,15 @@ export class LoginViewComponent implements OnInit {
 
 
 
-  public onSubmit(): void {
+  public async onSubmit(): Promise<void> {
 
     // Store in local storage for now (until we have a database)
-
     const email = this.checkoutForm.get('email')?.value;
     const password = this.checkoutForm.get('password')?.value;
 
     if(email != null && email != undefined && password != null && password != undefined) {
-      this.loginService.login(email, password);/*.subscribe((response: any) => {
-        console.log('response: ', response);
-      });*/
+      await this.loginService.login(email, password);
+      this.goToDashboard();
     }
-
-
-
-    // go to accounts page
-    //window.location.href = '/accounts';
-
-
-
   }
-
 }
