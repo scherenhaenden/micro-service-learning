@@ -21,23 +21,30 @@ public class LoginController : Controller
     {
         var response = _userService.Authenticate(model);
 
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         if (response == null)
+        {
             return BadRequest(new { message = "Username or password is incorrect" });
+        }
+
         try
         {
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
             if (HttpContext != null)
             {
                 HttpContext.Response.Headers.Add("Authorization", "Bearer " + response.Token);
             }
-            
-        }
-        finally{}
-       
 
+        }
+        catch (Exception e)
+        {
+            return BadRequest(new { message = "An error just ocurred" });
+        }
+       
         return Ok(response);
     }
 
-    [BankingClientBackend.Services.Middlewares.JWT.Authorize]
+    [Services.Middlewares.JWT.Authorize]
     [HttpGet]
     public IActionResult GetAll()
     {

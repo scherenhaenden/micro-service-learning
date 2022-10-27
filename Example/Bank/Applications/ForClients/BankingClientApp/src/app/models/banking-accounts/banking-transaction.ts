@@ -6,6 +6,5 @@ export class BankingTransaction {
   public currency!: string;
   public type!: string;
   public isBlocked!: boolean;
-  public sendingAccountNumber!: string;
-  public receivingAccountNumber!: string;
+  public relatedTransactionAccountNumber!: string;
 }
