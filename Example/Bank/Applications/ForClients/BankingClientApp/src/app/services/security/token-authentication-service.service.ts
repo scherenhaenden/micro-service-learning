@@ -8,6 +8,12 @@ export class TokenAuthenticationServiceService {
 
   constructor() { }
 
+  // Create method that decodes token and returns the decoded value
+  public decode(token: string): any| undefined {
+    const decoded = jwt_decode(token) as any;
+    return decoded;
+  }
+
   // Create method that checks if token is valid by inputstring token
   public isTokenValidByToken(token: string): boolean {
 
