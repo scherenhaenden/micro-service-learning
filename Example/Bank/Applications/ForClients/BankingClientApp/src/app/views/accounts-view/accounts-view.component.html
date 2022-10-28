@@ -12,8 +12,8 @@
                       <h3 class="text-dark mb-0">Accounts</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                   </div>
                   <div class="row">
-                    <app-banking-account-cards class="col-md-6 col-xl-3 mb-4"     *ngFor="let bankingAccount of accounts"
-                    [bankingAccountsSimple]="bankingAccount"></app-banking-account-cards>
+                    <app-banking-account-cards class="col-md-6 col-xl-3 mb-4"     *ngFor="let bankingAccount of accountsV2"
+                    [bankingAccountCompactModel]="bankingAccount"></app-banking-account-cards>
                   </div>
               </div>
           </div>
