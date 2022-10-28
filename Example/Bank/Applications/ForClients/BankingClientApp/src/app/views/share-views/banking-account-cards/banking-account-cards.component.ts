@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BankingAccountCompactModel } from 'src/app/models/banking-accounts/banking-account-compact-model';
 import { BankingAccountSimple } from 'src/app/models/banking-accounts/banking-account-simple';
 
 @Component({
@@ -10,7 +11,7 @@ export class BankingAccountCardsComponent implements OnInit {
 
   // Create property input that receives banking accounts simple
 
-  @Input() public bankingAccountsSimple!: BankingAccountSimple;
+  @Input() public bankingAccountCompactModel!: BankingAccountCompactModel;
 
 
   constructor() { }
