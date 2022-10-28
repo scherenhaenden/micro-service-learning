@@ -1,4 +1,5 @@
 using AutoMapper;
+using BankingClientBackend.Services.Middlewares.JWT;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankingClientBackend.Controllers;
@@ -16,9 +17,11 @@ public class AccountsController : Controller
     }
     
     
-    [HttpGet("GetAccountByUserId")]
-    public List<BankingAccountSimple> GetAccountByUserId(string userId)
+    [HttpGet("GetAccounts")]
+    public List<BankingAccountSimple> GetAccounts()
     {
+        
+        var user = GetCurrentUser();
         
         var config = new MapperConfiguration(cfg => 
             {
@@ -31,8 +34,17 @@ public class AccountsController : Controller
 
         return destinations;
     }
-    
-    
+
+    private User? GetCurrentUser()
+    {
+       
+        
+        var user = (User)HttpContext.Items["User"];
+
+        return user;
+    }
+
+
     [HttpGet("GetAccountCompactByIserIdAndAccountNumber")]
     
     public BankingAccountComplete? GetAccountCompactByIserIdAndAccountNumber(string userId, string userAccountNumber)
