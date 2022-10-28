@@ -13,6 +13,7 @@ import { AccountsViewComponent } from './views/accounts-view/accounts-view.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptorService } from './services/security/jwt-interceptor.service';
+import { ShareViewsModule } from './views/share-views/share-views.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { JwtInterceptorService } from './services/security/jwt-interceptor.servi
     SharedComponentsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ShareViewsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 export class ApiBaseService {
 
   constructor(private http: HttpClient) { }
+
   public async get(route: string, host?: string): Promise<any> {
 
     const url = host ? host + route : environment.apiHost + route;

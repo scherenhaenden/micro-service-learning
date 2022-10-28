@@ -14,22 +14,18 @@ describe('AppComponent', () => {
     }).compileComponents();
   });
 
+  // Create Test 'sould create the app'
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
+  // Create Test 'should have as title 'banking-client-app''
   it(`should have as title 'BankingClientApp'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('BankingClientApp');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('BankingClientApp app is running!');
-  });
 });

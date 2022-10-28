@@ -3,6 +3,8 @@ export class InputPropertiesModel {
   public keyProperty!: string;
   public keyValue!: string;
 
+}
+
 
   //public type!: string;
   /*public name: string;
@@ -65,4 +67,4 @@ export class InputPropertiesModel {
   public formControlRequiredChangesSubscription: Subscription;
   public formControlErrorsChangesSubscription: Subscription;
   //public formControlPristineChanges
-}
+}*/
