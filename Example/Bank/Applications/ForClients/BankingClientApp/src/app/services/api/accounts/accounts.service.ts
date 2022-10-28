@@ -9,8 +9,7 @@ export class AccountsService {
 
   constructor(private apiBaseService: ApiBaseService) { }
 
-  public async getAccountsByUserId(userId: string): Promise<BankingAccountCompactModel[]> {
-    // HttpParams userId
-    return await this.apiBaseService.get(`/Accounts/GetAccountByUserId?userId=${userId}`);
+  public async getAccounts(): Promise<BankingAccountCompactModel[]> {
+    return await this.apiBaseService.get(`/Accounts/getAccounts`);
   }
 }
