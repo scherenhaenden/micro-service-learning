@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BankingAccountCompactModel } from 'src/app/models/banking-accounts/banking-account-compact-model';
-import { BankingAccountSimple } from 'src/app/models/banking-accounts/banking-account-simple';
 
 @Component({
   selector: 'app-banking-account-cards',
