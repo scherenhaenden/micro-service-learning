@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend.DataAc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend.Logic", "BankingClientBackend.Logic\BankingClientBackend.Logic.csproj", "{0B174B9D-343E-4098-8D95-B0BF3BE69911}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend.DataAccess.Database", "BankingClientBackend.DataAccess.Database\BankingClientBackend.DataAccess.Database.csproj", "{564C058D-1404-49CF-8A54-7DD4E4802289}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{0B174B9D-343E-4098-8D95-B0BF3BE69911}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B174B9D-343E-4098-8D95-B0BF3BE69911}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B174B9D-343E-4098-8D95-B0BF3BE69911}.Release|Any CPU.Build.0 = Release|Any CPU
+		{564C058D-1404-49CF-8A54-7DD4E4802289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{564C058D-1404-49CF-8A54-7DD4E4802289}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{564C058D-1404-49CF-8A54-7DD4E4802289}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{564C058D-1404-49CF-8A54-7DD4E4802289}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

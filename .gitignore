@@ -17,3 +17,5 @@ Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.D
 Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.DataAccess/obj/
 Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.Logic/obj/
 Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.Logic/bin/
+Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.DataAccess.Database/obj/
+Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.DataAccess.Database/bin/
