@@ -13,3 +13,7 @@ Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend/o
 Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.Nunit.Tests/bin/
 Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.Nunit.Tests/obj/
 Example/Bank/Applications/ForClients/BankingClientBackend/.idea/
+Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.DataAccess/bin/
+Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.DataAccess/obj/
+Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.Logic/obj/
+Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.Logic/bin/

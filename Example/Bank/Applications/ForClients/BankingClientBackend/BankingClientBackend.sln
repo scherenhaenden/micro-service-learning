@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend", "Ban
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend.Nunit.Tests", "BankingClientBackend.Nunit.Tests\BankingClientBackend.Nunit.Tests.csproj", "{04C578AB-3B31-41F1-B813-23C9474CA9A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend.DataAccess", "BankingClientBackend.DataAccess\BankingClientBackend.DataAccess.csproj", "{AB0D25FC-7633-4401-9CB9-C311FAFB4084}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend.Logic", "BankingClientBackend.Logic\BankingClientBackend.Logic.csproj", "{0B174B9D-343E-4098-8D95-B0BF3BE69911}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{04C578AB-3B31-41F1-B813-23C9474CA9A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04C578AB-3B31-41F1-B813-23C9474CA9A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04C578AB-3B31-41F1-B813-23C9474CA9A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB0D25FC-7633-4401-9CB9-C311FAFB4084}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB0D25FC-7633-4401-9CB9-C311FAFB4084}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB0D25FC-7633-4401-9CB9-C311FAFB4084}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB0D25FC-7633-4401-9CB9-C311FAFB4084}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B174B9D-343E-4098-8D95-B0BF3BE69911}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B174B9D-343E-4098-8D95-B0BF3BE69911}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B174B9D-343E-4098-8D95-B0BF3BE69911}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B174B9D-343E-4098-8D95-B0BF3BE69911}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
