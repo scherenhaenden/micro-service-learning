@@ -1,0 +1,1 @@
+docker run -itd --name mydb2 --privileged=true -p 50000:50000 -e LICENSE=accept -e DB2INST1_PASSWORD=MySuperPass -e DBNAME=testdb -v /home/edward/Development/DBs/Example/Db2/BankingData/:/database ibmcom/db2
