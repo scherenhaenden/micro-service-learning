@@ -1,11 +1,12 @@
-export class BankingTransaction {
+import { InterfaceTransaction } from "./interface-transaction";
+
+export class BankingTransaction implements InterfaceTransaction{
   public id!: string;
-  public date!: Date;
+  public date!: string;
   public description!: string;
   public amount!: number;
   public currency!: string;
   public type!: string;
   public isBlocked!: boolean;
-  public sendingAccountNumber!: string;
-  public receivingAccountNumber!: string;
+  public relatedTransactionAccountNumber!: string;
 }

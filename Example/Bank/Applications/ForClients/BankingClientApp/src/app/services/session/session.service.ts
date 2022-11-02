@@ -35,6 +35,15 @@ export class SessionService {
     return localStorage.getItem('token') as string| undefined;
   }
 
+  // Get user id from token
+  public getUserId(): string | undefined {
+    const decodeValues = this.tokenAuthenticationServiceService.decode(this.getToken()!);
+    if(decodeValues == null || decodeValues == undefined) {
+      return undefined
+    }
+    return decodeValues['id'];
+  }
+
 
   // Create method that gets user email from local storage
   public getSessionEmail(): string| undefined {

@@ -28,7 +28,6 @@ export class JwtInterceptorService {
             });
 
         }
-        console.log('Request: ' + JSON.stringify(request));
 
         return next.handle(request).pipe(
           tap((response) => {

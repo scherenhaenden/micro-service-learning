@@ -13,6 +13,10 @@ export class MainUpBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+
+
+
   // Declare output emit for loggout
   @Output() logoutEvent = new EventEmitter();
 
