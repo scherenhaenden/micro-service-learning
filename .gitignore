@@ -19,3 +19,8 @@ Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.L
 Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.Logic/bin/
 Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.DataAccess.Database/obj/
 Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.DataAccess.Database/bin/
+Example/Bank/Applications/ForInternals/BankingMicroServices/UserClients.BusinessLogic/obj/
+Example/Bank/Applications/ForInternals/BankingMicroServices/UserClients.BusinessLogic/bin/
+Example/Bank/Applications/ForInternals/BankingMicroServices/BankingDataAccess/obj/
+Example/Bank/Applications/ForInternals/BankingMicroServices/BankingDataAccess/bin/
+Example/Bank/Applications/ForInternals/BankingMicroServices/.idea/.
