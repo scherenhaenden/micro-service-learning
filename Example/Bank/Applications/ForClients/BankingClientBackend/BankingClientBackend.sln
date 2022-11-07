@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend.Logic"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend.DataAccess.Database", "BankingClientBackend.DataAccess.Database\BankingClientBackend.DataAccess.Database.csproj", "{564C058D-1404-49CF-8A54-7DD4E4802289}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend.DataAccess.WebserviceProxy", "BankingClientBackend.DataAccess.WebserviceProxy\BankingClientBackend.DataAccess.WebserviceProxy.csproj", "{BBE8738E-30AA-44D0-B84B-85FDB8146126}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{564C058D-1404-49CF-8A54-7DD4E4802289}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{564C058D-1404-49CF-8A54-7DD4E4802289}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{564C058D-1404-49CF-8A54-7DD4E4802289}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBE8738E-30AA-44D0-B84B-85FDB8146126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBE8738E-30AA-44D0-B84B-85FDB8146126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBE8738E-30AA-44D0-B84B-85FDB8146126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBE8738E-30AA-44D0-B84B-85FDB8146126}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

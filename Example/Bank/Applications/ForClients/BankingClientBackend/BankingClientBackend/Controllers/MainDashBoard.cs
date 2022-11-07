@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BankingClientBackend.Controllers;
 
-[ApiController]
-[Route("[controller]")]
+    [ApiController]
+    [Route("[controller]")]
 public class MainDashBoard : Controller
 {
     [HttpGet]
