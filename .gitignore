@@ -24,3 +24,14 @@ Example/Bank/Applications/ForInternals/BankingMicroServices/UserClients.Business
 Example/Bank/Applications/ForInternals/BankingMicroServices/BankingDataAccess/obj/
 Example/Bank/Applications/ForInternals/BankingMicroServices/BankingDataAccess/bin/
 Example/Bank/Applications/ForInternals/BankingMicroServices/.idea/.
+Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.DataAccess.WebserviceProxy/obj/
+Example/Bank/Applications/ForClients/BankingClientBackend/BankingClientBackend.DataAccess.WebserviceProxy/bin/
+Example/Bank/Applications/ForInternals/BankingMicroServices/UserClients/bin/
+Example/Bank/Applications/ForInternals/BankingMicroServices/UserClients/obj/
+Example/Bank/Applications/ForInternals/BankingMicroServices/UserClients.DataAccess/obj/
+Example/Bank/Applications/ForInternals/BankingMicroServices/UserClients.DataAccess/bin/
+Example/Bank/Applications/ForInternals/BankingMicroServices/UserClients.DataAccess.Database/obj/
+Example/Bank/Applications/ForInternals/BankingMicroServices/UserClients.DataAccess.Database/bin/
+Example/Bank/Applications/ForInternals/BankingMicroServices/BankingSeeding/obj/
+Example/Bank/Applications/ForInternals/BankingMicroServices/BankingSeeding/bin/
+*.DS_Store
