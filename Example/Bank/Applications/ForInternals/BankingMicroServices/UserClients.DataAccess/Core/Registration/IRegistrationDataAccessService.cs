@@ -1,4 +1,5 @@
 using AutoMapper;
+using Newtonsoft.Json;
 using UserClients.DataAccess.Database.Logic;
 using UserClients.DataAccess.Database.Models.Registration;
 using UserClients.DataAccess.Models.RegistrationDomain;
@@ -22,7 +23,7 @@ public class RegistrationDataAccessService: IRegistrationDataAccessService
     
     public Task<bool> TryRegistration(UserRegistrationModelDataAccess request, out UserRegistrationModelDataAccess result)
     {
-        var config = new MapperConfiguration(cfg => cfg.CreateMap<UserRegistrationModelDataAccess, UserRegistrationModelData>());
+        /*var config = new MapperConfiguration(cfg => cfg.CreateMap<UserRegistrationModelDataAccess, UserRegistrationModelData>());
         
         var mapper = new Mapper(config);
         var dataAccessModel = mapper.Map<UserRegistrationModelData>(request);
@@ -30,6 +31,24 @@ public class RegistrationDataAccessService: IRegistrationDataAccessService
         _registrationDataAccess.TryRegistration(dataAccessModel, out var resultDataAccess);
         
         result = mapper.Map<UserRegistrationModelDataAccess>(resultDataAccess);
+        return Task.FromResult(true);*/
+        
+        // Convert obj to json
+        var json = JsonConvert.SerializeObject(request);
+        
+        // Convert json to obj of type UserRegistrationModelData
+        var dataAccessModel = JsonConvert.DeserializeObject<UserRegistrationModelData>(json);
+        
+        _registrationDataAccess.TryRegistration(dataAccessModel, out var resultDataAccess);
+        
+        // Convert obj to json
+        
+        var resultJson = JsonConvert.SerializeObject(resultDataAccess);
+        
+        // Convert json to obj of type UserRegistrationModelDataAccess
+        
+        result = JsonConvert.DeserializeObject<UserRegistrationModelDataAccess>(resultJson);
         return Task.FromResult(true);
+        
     }
 }

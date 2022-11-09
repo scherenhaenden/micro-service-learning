@@ -15,6 +15,11 @@ public class DbInitiator
     {
         return new ContextGenerator().GetContextInMemory();
     }
+    
+    public GenericContext GetSqliteContext()
+    {
+        return new ContextGenerator().GetContextSqlite();
+    }
 }
 
 public class ContextGenerator
@@ -31,6 +36,14 @@ public class ContextGenerator
     {
         var optionsBuilder = new DbContextOptionsBuilder<GenericContext>();
         optionsBuilder.UseLazyLoadingProxies().UseInMemoryDatabase("BankingSeeding");
+        return new GenericContext(optionsBuilder.Options);
+    }
+    
+    // Add method to get generate sqlite database
+    public GenericContext GetContextSqlite()
+    {
+        var optionsBuilder = new DbContextOptionsBuilder<GenericContext>();
+        optionsBuilder.UseLazyLoadingProxies().UseSqlite("Data Source=../../../../../../../Data/BankingSeeding.db");
         return new GenericContext(optionsBuilder.Options);
     }
 }

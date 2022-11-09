@@ -1,6 +1,7 @@
 using AutoMapper;
 using BankingDataAccess.Core.Configuration;
 using BankingDataAccess.Core.Domain;
+using Newtonsoft.Json;
 using UserClients.DataAccess.Database.Models.Registration;
 
 namespace UserClients.DataAccess.Database.Logic;
@@ -17,14 +18,14 @@ public class RegistrationDataAccess: IRegistrationDataAccess
 {
     private readonly IUnityOfWork<Customer> _customerUow;
     private readonly IUnityOfWork<Addresses> _addressesUow;
-    private readonly IUnityOfWork<CustomerToAccount> _customerToAccountIdUow;
-    private readonly IUnityOfWork<CustomerToAddressId> _customerToAddressIdUow;
+    private readonly IUnityOfWork<CustomerToBankAccount> _customerToAccountIdUow;
+    private readonly IUnityOfWork<CustomersToAddresses> _customerToAddressIdUow;
 
     public RegistrationDataAccess(
         IUnityOfWork<Customer> customerUow, 
         IUnityOfWork<Addresses> addressesUow,
-        IUnityOfWork<CustomerToAccount> customerToAccountIdUow,
-        IUnityOfWork<CustomerToAddressId> customerToAddressIdUow
+        IUnityOfWork<CustomerToBankAccount> customerToAccountIdUow,
+        IUnityOfWork<CustomersToAddresses> customerToAddressIdUow
         )
 
 
@@ -45,14 +46,14 @@ public class RegistrationDataAccess: IRegistrationDataAccess
         _addressesUow.Repository.Add(address);
     }
     
-    public void AddCustomerToAccountId(CustomerToAccount customerToAccountId)
+    public void AddCustomerToAccountId(CustomerToBankAccount customerToBankAccountId)
     {
-        _customerToAccountIdUow.Repository.Add(customerToAccountId);
+        _customerToAccountIdUow.Repository.Add(customerToBankAccountId);
     }
     
-    public void AddCustomerToAddressId(CustomerToAddressId customerToAddressId)
+    public void AddCustomerToAddressId(CustomersToAddresses customersToAddresses)
     {
-        _customerToAddressIdUow.Repository.Add(customerToAddressId);
+        _customerToAddressIdUow.Repository.Add(customersToAddresses);
     }
     
     public void Commit()
@@ -68,17 +69,17 @@ public class RegistrationDataAccess: IRegistrationDataAccess
         
         request.Addresses.Id = Guid.NewGuid();
         request.Addresses.CreatedDateTime = DateTime.Now;
-        request.CustomerInput.Id = Guid.NewGuid();
-        request.CustomerInput.CreatedDateTime = DateTime.Now;
+        request.Customer.Id = Guid.NewGuid();
+        request.Customer.CreatedDateTime = DateTime.Now;
         
-        CustomerToAddressId customerToAddressId = new CustomerToAddressId();
-        customerToAddressId.Id = Guid.NewGuid();
-        customerToAddressId.CreatedDateTime = DateTime.Now;
-        customerToAddressId.CustomerId = request.CustomerInput.Id;
-        customerToAddressId.AddressId = request.Addresses.Id;
+        CustomersToAddresses customersToAddresses = new CustomersToAddresses();
+        customersToAddresses.Id = Guid.NewGuid();
+        customersToAddresses.CreatedDateTime = DateTime.Now;
+        customersToAddresses.CustomerId = request.Customer.Id;
+        customersToAddresses.AddressId = request.Addresses.Id;
         
         
-        var config = new MapperConfiguration(
+        /*var config = new MapperConfiguration(
             cfg => cfg.CreateMap<Customer, CustomerInput>()
         );
         
@@ -92,16 +93,24 @@ public class RegistrationDataAccess: IRegistrationDataAccess
         
         
         var mapper = new Mapper(config);
-        var customer = mapper.Map<Customer>(request.CustomerInput);
+        var customer = mapper.Map<Customer>(request.Customer);
         
         var mapper2 = new Mapper(config2);
         var addresses = mapper2.Map<Addresses>(request.Addresses);
         
         var mapper3 = new Mapper(config3);
-        var more = mapper3.Map<Customer>(request.CustomerInput);
+        var more = mapper3.Map<Customer>(request.Customer);*/
+        
+        // Convert Object to Entity using json
+        var customer = JsonConvert.DeserializeObject<Customer>(JsonConvert.SerializeObject(request.Customer));
+        
+        var addresses = JsonConvert.DeserializeObject<Addresses>(JsonConvert.SerializeObject(request.Addresses));
+        
         
         AddCustomer(customer);
         AddAddress(addresses);
+        
+        AddCustomerToAddressId(customersToAddresses);
 
         result = request;
         

@@ -3,7 +3,7 @@ namespace UserClients.DataAccess.Database.Models.Registration;
 public class UserRegistrationModelData
 {
 
-    public CustomerInput CustomerInput { get; set; }
+    public CustomerInput Customer { get; set; }
     
     public AddressesInput Addresses { get; set; }
 

@@ -25,10 +25,12 @@ builder.Services.AddDbContextPool<DbContext, GenericContext>(options => options
     .UseLazyLoadingProxies().
     UseInMemoryDatabase("BankingSeeding"));
 
+builder.Services.AddScoped<IUnitOfWorkV2, UnityOfWorkV2>();
+
 builder.Services.AddScoped<IUnityOfWork<Customer>, UnityOfWorkInMemory<Customer>>();
 builder.Services.AddScoped<IUnityOfWork<Addresses>, UnityOfWorkInMemory<Addresses>>();
-builder.Services.AddScoped<IUnityOfWork<CustomerToAccount>, UnityOfWorkInMemory<CustomerToAccount>>();
-builder.Services.AddScoped<IUnityOfWork<CustomerToAddressId>, UnityOfWorkInMemory<CustomerToAddressId>>();
+builder.Services.AddScoped<IUnityOfWork<CustomerToBankAccount>, UnityOfWorkInMemory<CustomerToBankAccount>>();
+builder.Services.AddScoped<IUnityOfWork<CustomersToAddresses>, UnityOfWorkInMemory<CustomersToAddresses>>();
 
 builder.Services.AddScoped<IRegistrationDataAccess, RegistrationDataAccess>();
 
