@@ -1,5 +1,6 @@
 using System.Linq.Expressions;
 using BankingDataAccess.Core.BaseDomain;
+using Microsoft.EntityFrameworkCore;
 
 namespace BankingDataAccess.Core.Repositories;
 
@@ -11,7 +12,7 @@ public interface IRepository<TEntity> where TEntity : Entity, IEntity
     Task AddAsync(TEntity entity);
     Task UpdateAsync(TEntity entity);
     Task DeleteAsync(TEntity entity);*/
-    
+
     IQueryable GetAll();
     TEntity Get(Guid id);
     IEnumerable<TEntity> Where(Expression<Func<TEntity, bool>> predicate);
