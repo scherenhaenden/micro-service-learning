@@ -35,3 +35,9 @@ Example/Bank/Applications/ForInternals/BankingMicroServices/UserClients.DataAcce
 Example/Bank/Applications/ForInternals/BankingMicroServices/BankingSeeding/obj/
 Example/Bank/Applications/ForInternals/BankingMicroServices/BankingSeeding/bin/
 *.DS_Store
+Example/Bank/Applications/ForInternals/BankingMicroServices/SmallConsoleView/bin/
+Example/Bank/Applications/ForInternals/BankingMicroServices/SmallConsoleView/obj/
+*/obj/
+**/obj/
+*/bin/
+**/bin/
