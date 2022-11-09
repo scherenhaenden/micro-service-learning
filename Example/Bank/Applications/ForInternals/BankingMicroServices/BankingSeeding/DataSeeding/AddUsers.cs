@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using BankingDataAccess.Core.BaseDomain;
 using BankingDataAccess.Core.Domain;
 using GenericTools.Security.Core;
 using GenericTools.Security.Persistance;
@@ -7,6 +8,34 @@ namespace BankingSeeding.DataSeeding;
 
 public class AddUsers
 {
+
+    public List<(Users, Roles, Tokens)> GetFirstUsers()
+    {
+        
+        List<(Users, Roles, Tokens)> users = new List<(Users, Roles, Tokens)>();
+
+        var tokens = GetTokens();
+        tokens.ForEach(i=>i.IsNew());
+        var roles = GetRoles();
+        roles.ForEach(i=>i.IsNew());
+        var usersList = GetUsers();
+        usersList.ForEach(i=>i.IsNew());
+
+        var admin =usersList.First(x => x.FirstName == "Admin");
+        var role = roles.First(x => x.RoleName == "Admin");
+        var token = tokens.First(x => x.TokenName == "Admin");
+        role.Tokens.Add(token);
+        admin.Roles.Add(role);
+        admin.DirectlyAssignTokensTokens.Add(token);
+        
+        users.Add((admin, role, token));
+
+
+        return users;
+    }
+    
+    
+    
     // Create a new user manager
 
     public List<Users> GetUsers()
@@ -47,7 +76,6 @@ public class AddUsers
         roleAdmin.RoleName = "Admin";
         roleAdmin.Description = "Admin";
         roleAdmin.IsActive = true;
-        
         listOfRoles.Add(roleAdmin);
         return listOfRoles;
     }
@@ -64,6 +92,9 @@ public class AddUsers
         listOfTokens.Add(tokenAdmin);
         return listOfTokens;
     }
+    
+    // Create new Customers
+    
 
 
 }

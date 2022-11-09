@@ -29,14 +29,8 @@ builder.Services.AddScoped<IUnitOfWorkV2, UnityOfWorkV2>();
 
 builder.Services.AddScoped<IUnityOfWork<Customer>, UnityOfWorkInMemory<Customer>>();
 builder.Services.AddScoped<IUnityOfWork<Addresses>, UnityOfWorkInMemory<Addresses>>();
-builder.Services.AddScoped<IUnityOfWork<CustomerToBankAccount>, UnityOfWorkInMemory<CustomerToBankAccount>>();
-builder.Services.AddScoped<IUnityOfWork<CustomersToAddresses>, UnityOfWorkInMemory<CustomersToAddresses>>();
-
 builder.Services.AddScoped<IRegistrationDataAccess, RegistrationDataAccess>();
-
-
 builder.Services.AddScoped<IRegistrationDataAccessService, RegistrationDataAccessService>();
-
 builder.Services.AddScoped<IRegistrationLogicService, RegistrationLogicService>();
 
 var app = builder.Build();

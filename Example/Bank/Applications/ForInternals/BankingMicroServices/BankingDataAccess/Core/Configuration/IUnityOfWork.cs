@@ -17,20 +17,24 @@ public interface IUnitOfWorkV2: IDisposable
     
     IRepository<Addresses> Addresses { get; }
     
-    IRepository<BankAccount> BankAccounts { get; }
+    IRepository<BankAccounts> BankAccounts { get; }
     
     IRepository<Currency> Currencies { get; }
     
     IRepository<Customer> Customers { get; }
     
-    IRepository<CustomersToAddresses> CustomersToAddresses { get; }
+    //IRepository<CustomersToAddresses> CustomersToAddresses { get; }
     
-    IRepository<CustomerToBankAccount> CustomersBankAccounts { get; }
+    //IRepository<CustomerToBankAccount> CustomersBankAccounts { get; }
     
     IRepository<Transactions> Transactions { get; }
 
     IRepository<TransactionTypes> TransactionTypes { get; }
     
     IRepository<Users> Users { get; }
+    
+    IRepository<Roles> Roles { get; }
+    
+    IRepository<Tokens> Tokens { get; }
     int Complete();
 }

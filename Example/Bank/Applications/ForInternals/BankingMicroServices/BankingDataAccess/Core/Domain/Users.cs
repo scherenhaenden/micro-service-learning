@@ -4,6 +4,15 @@ namespace BankingDataAccess.Core.Domain;
 
 public class Users: Entity
 {
+    public Users()
+    {
+        DirectlyAssignTokensTokens = new HashSet<Tokens>();
+        Roles = new HashSet<Roles>();
+    }
+    
+    public virtual ICollection<Tokens> DirectlyAssignTokensTokens { get; set; }
+    public virtual ICollection<Roles> Roles { get; set; }
+    
     public string UserName { get; set; }
     public string Password { get; set; }
     public string Email { get; set; }
@@ -11,30 +20,7 @@ public class Users: Entity
     public string LastName { get; set; }
     public bool IsActive { get; set; }
 }
-
-// Tokens table
-
-// Tokens roles table
-public class TokensRoles: Entity
-{
-    public int TokenId { get; set; }
-    public int RoleId { get; set; }
-}
-
-
-// Tokens users table
-public class TokensUsers: Entity
-{
-    public int TokenId { get; set; }
-    public int UserId { get; set; }
-}
-
-public class UserRoles: Entity
-{
-    public int UserId { get; set; }
-    public int RoleId { get; set; }
-}
-
+/*
 public class UserClaims: Entity
 {
     public int UserId { get; set; }
@@ -82,3 +68,4 @@ public class UserEmployees: Entity
     public int UserId { get; set; }
     public int EmployeeId { get; set; }
 }
+*/

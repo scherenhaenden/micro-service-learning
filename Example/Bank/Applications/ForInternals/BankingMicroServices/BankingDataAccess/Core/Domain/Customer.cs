@@ -6,12 +6,14 @@ public class Customer: Entity
 {
     public Customer()
     {
-        Account = new HashSet<BankAccount>();
+        Account = new HashSet<BankAccounts>();
         Addresses = new HashSet<Addresses>();
     }
     
-    public virtual ICollection<BankAccount> Account { get; set; }
+    public virtual ICollection<BankAccounts> Account { get; set; }
     public virtual ICollection<Addresses> Addresses { get; set; }
+    
+    
     public DateTime DateOfSignup { get; set; }
     public string TypeOfCustomer { get; set; } = null!;
     public DateTime DateOfBirth { get; set; }

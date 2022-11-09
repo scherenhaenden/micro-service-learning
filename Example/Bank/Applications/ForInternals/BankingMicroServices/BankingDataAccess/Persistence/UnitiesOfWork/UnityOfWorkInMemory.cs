@@ -141,14 +141,16 @@ public class UnityOfWorkV2 : IUnitOfWorkV2
 
     public IRepository<AccountTypes> AccountTypes { get; private set; }
     public IRepository<Addresses> Addresses { get; private set; }
-    public IRepository<BankAccount> BankAccounts { get; private set; }
+    public IRepository<BankAccounts> BankAccounts { get; private set; }
     public IRepository<Currency> Currencies { get; private set;  }
     public IRepository<Customer> Customers { get; private set; }
-    public IRepository<CustomersToAddresses> CustomersToAddresses { get; private set; }
-    public IRepository<CustomerToBankAccount> CustomersBankAccounts { get; private set; }
+    /*public IRepository<CustomersToAddresses> CustomersToAddresses { get; private set; }
+    public IRepository<CustomerToBankAccount> CustomersBankAccounts { get; private set; }*/
     public IRepository<Transactions> Transactions { get; private set; }
     public IRepository<TransactionTypes> TransactionTypes { get; private set; }
     public IRepository<Users> Users { get; private set; }
+    public IRepository<Roles> Roles { get; private set;}
+    public IRepository<Tokens> Tokens { get; private set;}
 
     public int Complete()
     {

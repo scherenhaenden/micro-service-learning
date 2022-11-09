@@ -19,11 +19,11 @@ public class GenericContext: DbContext
     // Add all of your entities here that are defined in the namespace BankingDataAccess.Core.Domain please read the types from that namespace
      public DbSet<AccountTypes> AccountTypes { get; set; }
      public DbSet<Addresses> Addresses { get; set; }
-     public DbSet<BankAccount> BankAccounts { get; set; }
+     public DbSet<BankAccounts> BankAccounts { get; set; }
      public DbSet<Currency> Currencies { get; set; }
      public DbSet<Customer> Customers { get; set; }
-     public DbSet<CustomersToAddresses> CustomersToAddresses { get; set; }
-     public DbSet<CustomerToBankAccount> CustomersToBankAccounts { get; set; }
+     /*public DbSet<CustomersToAddresses> CustomersToAddresses { get; set; }
+     public DbSet<CustomerToBankAccount> CustomersToBankAccounts { get; set; }*/
      public DbSet<Transactions> Transactions { get; set; }
      public DbSet<TransactionTypes> TransactionsToBankAccounts { get; set; }
      

@@ -4,8 +4,8 @@ namespace BankingDataAccess.Core.Domain;
 
 public class Transactions: Entity
 { 
-    public Guid TransactionTypeId { get; set; }
-    public Guid AccountId { get; set; }
+    public virtual TransactionTypes TransactionType { get; set; }
+    public virtual BankAccounts BankAccounts { get; set; }
     public decimal Amount { get; set; }
     public DateTime DateOfTheTransaction { get; set; }
     public string Description { get; set; }
