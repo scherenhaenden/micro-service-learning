@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using BankingDataAccess.Core.BaseDomain;
 using BankingDataAccess.Core.Domain;
 using BankingDataAccess.Core.Repositories;
@@ -36,5 +37,11 @@ public interface IUnitOfWorkV2: IDisposable
     IRepository<Roles> Roles { get; }
     
     IRepository<Tokens> Tokens { get; }
+
+
+    IQueryable<TEntity> GetAllIncluding<TEntity>(params Expression<Func<TEntity, object>>[] includeProperties)
+        where TEntity : Entity, IEntity;
+
+    
     int Complete();
 }

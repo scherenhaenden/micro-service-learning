@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using System.Reflection;
 using BankingDataAccess.Core.BaseDomain;
 using BankingDataAccess.Core.Configuration;
@@ -151,6 +152,12 @@ public class UnityOfWorkV2 : IUnitOfWorkV2
     public IRepository<Users> Users { get; private set; }
     public IRepository<Roles> Roles { get; private set;}
     public IRepository<Tokens> Tokens { get; private set;}
+
+    public IQueryable<TEntity> GetAllIncluding<TEntity>(params Expression<Func<TEntity, object>>[] includeProperties) where TEntity : Entity, IEntity
+    {
+        IQueryable<TEntity> query = _context.Set<TEntity>();
+        return includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+    }
 
     public int Complete()
     {

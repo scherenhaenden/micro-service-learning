@@ -20,13 +20,65 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity, 
     {
         return Entity.AsQueryable();
     }
+    
+    // Load Property
+    public IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] includeProperties) 
+    {
+        IQueryable<TEntity> query = Entity;
+        return includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+    }
+    
+    // Load Related Entity
+    public IQueryable<TEntity> GetAllIncluding(params string[] includeProperties)
+    {
+        IQueryable<TEntity> query = Entity;
+        return includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+    }
+    
+    public async Task<IEnumerable<TEntity>> EntityWithEagerLoad(Expression<Func<TEntity, bool>> filter, string[] children)  
+    {  
+        try  
+        {  
+            IQueryable<TEntity> query = Entity;  
+            foreach (string entity in children)  
+            {  
+                query = query.Include(entity);  
+  
+            }  
+            return await query.Where(filter).ToListAsync();  
+        }  
+        catch(Exception e)  
+        {  
+            throw e;  
+        } 
+        
+    }
+    
+    public async Task<IEnumerable<TEntity>> IncludeEntities(Expression<Func<TEntity, bool>> filter, string[] children)  
+    {  
+        try  
+        {  
+            IQueryable<TEntity> query = Entity;  
+            foreach (string entity in children)  
+            {  
+                query = query.Include(entity);  
+            }  
+            return await query.Where(filter).ToListAsync();  
+        }  
+        catch(Exception e)  
+        {  
+            throw e;  
+        } 
+        
+    }
+
 
     public TEntity Get(Guid id)
     {
         return Entity.Single(x=>x.Id == id);
     }
 
-    public IEnumerable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
+    public IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
     {
         return Entity.Where(predicate);
     }

@@ -20,10 +20,17 @@ optionsBuilder.UseLazyLoadingProxies().UseInMemoryDatabase("BankingSeeding");
 builder.Services.AddSingleton(optionsBuilder.Options);*/
 
 
+/*builder.Services.AddDbContextPool<DbContext, GenericContext>(options => options
+    // replace with your connection string
+    .UseLazyLoadingProxies().
+    UseInMemoryDatabase("BankingSeeding"));*/
+
 builder.Services.AddDbContextPool<DbContext, GenericContext>(options => options
     // replace with your connection string
     .UseLazyLoadingProxies().
-    UseInMemoryDatabase("BankingSeeding"));
+    UseSqlite("Data Source=../../../../../../../Data/BankingSeeding.db"));
+
+
 
 builder.Services.AddScoped<IUnitOfWorkV2, UnityOfWorkV2>();
 

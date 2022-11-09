@@ -1,0 +1,21 @@
+# Add docker-compose version
+version: "3.7"
+# Add services
+services:
+  # Add service for rabbitmq
+  rabbitmq:
+    # Add image
+    image: rabbitmq:3.8.2-management
+    # Add ports
+    ports:
+      - 5672:5672
+      - 15672:15672
+    # Add environment variables
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    # Add volumes
+    #volumes:
+    #  - rabbitmq_data:/var/lib/rabbitmq
+    # Add restart policy
+    restart: always

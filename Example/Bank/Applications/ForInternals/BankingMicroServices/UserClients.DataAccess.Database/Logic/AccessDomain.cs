@@ -55,7 +55,7 @@ public class RegistrationDataAccess: IRegistrationDataAccess
         AddCustomer(customer);
         AddAddress(addresses);
         
-        //AddCustomerToAddressId(customersToAddresses);
+        //eAddCustomerToAddressId(customersToAddresses);
 
         result = request;
         

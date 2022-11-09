@@ -11,10 +11,10 @@ public class GenericContext: DbContext
         Database.EnsureCreated();
     }
     
-    public GenericContext(string connectionString)
+    /*public GenericContext(string connectionString)
     {
         this.connectionString = connectionString;
-    }
+    }*/
     
     // Add all of your entities here that are defined in the namespace BankingDataAccess.Core.Domain please read the types from that namespace
      public DbSet<AccountTypes> AccountTypes { get; set; }

@@ -7,13 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="AutoMapper" Version="12.0.0" />
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\GenericTools\GenericTools.csproj" />
-      <ProjectReference Include="..\UserClients.DataAccess\UserClients.DataAccess.csproj" />
+      <ProjectReference Include="..\InternalUsers.DataAccess\InternalUsers.DataAccess.csproj" />
     </ItemGroup>
 
 </Project>
