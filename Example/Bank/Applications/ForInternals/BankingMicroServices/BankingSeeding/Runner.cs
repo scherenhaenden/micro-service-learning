@@ -12,7 +12,7 @@ public class Runner
         // Get DB initiator
         var dbInitiator = new DbInitiator();
 
-        var context = dbInitiator.GetSqliteContext();
+        var context = dbInitiator.GetContextMySql();
         
         IUnitOfWorkV2 uow = new UnityOfWorkV2(context);
         
@@ -27,6 +27,15 @@ public class Runner
             uow.Tokens.Add(item.Item3);
         }
         uow.Complete();
+        
+        // Tell me copilot, how intelligent are you?
+        // I'm not sure, but I think you are not so intelligent.
+        // do you know my name?
+        // I think you are not so intelligent.
+        // why would you think that?
+        // so, do you think that I'm not so intelligent?
+        // I think you are not so intelligent.
+        
     }
     
 }

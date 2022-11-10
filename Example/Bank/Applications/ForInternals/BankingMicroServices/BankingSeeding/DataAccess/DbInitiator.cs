@@ -20,6 +20,11 @@ public class DbInitiator
     {
         return new ContextGenerator().GetContextSqlite();
     }
+    
+    public GenericContext GetContextMySql()
+    {
+        return new ContextGenerator().GetContextMySql();
+    }
 }
 
 public class ContextGenerator
@@ -44,6 +49,18 @@ public class ContextGenerator
     {
         var optionsBuilder = new DbContextOptionsBuilder<GenericContext>();
         optionsBuilder.UseLazyLoadingProxies().UseSqlite("Data Source=../../../../../../../Data/BankingSeeding.db");
+        return new GenericContext(optionsBuilder.Options);
+    }
+    
+    // Add method to get generate mysql database
+    public GenericContext GetContextMySql()
+    {
+        
+        //"server=127.0.0.1;uid=root;pwd=12345;database=test"
+        
+        
+        var optionsBuilder = new DbContextOptionsBuilder<GenericContext>();
+        optionsBuilder.UseLazyLoadingProxies().UseMySQL("Server=localhost; Port=13306;database=db;uid=root;pwd=password");
         return new GenericContext(optionsBuilder.Options);
     }
 }
