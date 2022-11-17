@@ -4,26 +4,10 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Json.Serialization;
 using BankingClientBackend.EnviromentConfigs;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace BankingClientBackend.Services.Middlewares.JWT;
-
-[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-public class AuthorizeAttribute : Attribute, IAuthorizationFilter
-{
-    public void OnAuthorization(AuthorizationFilterContext context)
-    {
-        var user = (User)context.HttpContext.Items["User"];
-        if (user == null)
-        {
-            // not logged in
-            context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
-        }
-    }
-}
 
 public class User
 {
@@ -35,6 +19,40 @@ public class User
     [JsonIgnore]
     public string Password { get; set; }
 }
+
+public class GenericFrontEndUser
+{
+    public Guid Id { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Username { get; set; }
+    public string EmployeeId { get; set; }
+    public Object Roles { get; set; }
+    public Object serviceTokens { get; set; }
+
+    [JsonIgnore]
+    public string Password { get; set; }
+}
+
+public class GenericAuthenticateResponse
+{
+    public   GenericAuthenticateResponse(GenericFrontEndUser user, string jwtToken)
+    {
+        User = user;
+        Token = jwtToken;
+    }
+    
+    GenericFrontEndUser User { get; set; }
+    
+    public string Token { get; set; }
+
+}
+
+
+
+
+
+
 
 public class AuthenticateResponse
 {
@@ -124,6 +142,49 @@ public class UserService : IUserService
         var token = tokenHandler.CreateToken(tokenDescriptor);
         return tokenHandler.WriteToken(token);
     }
+}
+
+public class JwtTokenGenerator  
+{  
+    private readonly AppSettings _appSettings;  
+    public JwtTokenGenerator(IOptions<AppSettings> appSettings)  
+    {  
+        _appSettings = appSettings.Value;  
+    }  
+    public string GenerateToken(string userId, List<string>? userRoles, List<string>? userServiceTokens)
+    {
+        List<Claim> RoleClaims = new List<Claim>();  
+        
+
+        // Parse user roles to claims
+        foreach (var role in userRoles)
+        {
+            var claim = new Claim(ClaimTypes.Role, role);
+            RoleClaims.Add(claim);
+        }
+        
+        // Parse user tokens to claims
+        foreach (var serviceToken in userServiceTokens)
+        {
+            var claim = new Claim(ClaimTypes.UserData, serviceToken);
+            RoleClaims.Add(claim);
+        }
+     
+        
+        RoleClaims.Add(new Claim(ClaimTypes.NameIdentifier, userId));
+        
+        var tokenHandler = new JwtSecurityTokenHandler();  
+        var key = Encoding.ASCII.GetBytes(_appSettings.SecretJwtKey);  
+        var tokenDescriptor = new SecurityTokenDescriptor  
+        {  
+            Subject = new ClaimsIdentity(
+                RoleClaims),
+            Expires = DateTime.UtcNow.AddHours(1),  
+            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)  
+        };  
+        var token = tokenHandler.CreateToken(tokenDescriptor);  
+        return tokenHandler.WriteToken(token);  
+    }  
 }
 
 

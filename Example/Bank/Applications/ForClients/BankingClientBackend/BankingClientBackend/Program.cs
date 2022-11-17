@@ -1,6 +1,9 @@
+using System.Text;
 using BankingClientBackend.EnviromentConfigs;
 using BankingClientBackend.Services.Middlewares.Cors;
 using BankingClientBackend.Services.Middlewares.JWT;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,12 +41,39 @@ builder.Services.AddSwaggerGen(c =>
         } 
     });
 });
-//var appSettingsSection = Configuration.GetSection("AppSettings");
 var appSettings = builder.Configuration.GetSection("AppSettings");
-
 builder.Services.Configure<AppSettings>(appSettings);
+var realSettings = appSettings.Get<AppSettings>();
+/*builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{        
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        //var key = Encoding.ASCII.GetBytes(_appSettings.SecretJwtKey);
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = appSettings["Jwt:Issuer"],
+        ValidAudience = appSettings["Jwt:Issuer"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(realSettings.SecretJwtKey))
+    };
+});*/
+
+/*builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearerConfiguration(
+        appSettings["Jwt:Issuer"],
+        appSettings["Jwt:Audience"]
+    );*/
+
+
+
+//var appSettingsSection = Configuration.GetSection("AppSettings");
+
+
+builder.Services.AddAuthorization();
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<JwtTokenGenerator>();
 
 
 
@@ -67,11 +97,11 @@ else
 {
     app.UseHttpsRedirection();
 }
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseMiddleware<JwtMiddleware>();
 app.UseMiddleware<ReadAndResponseJWT>();
-
-app.UseAuthorization();
 
 app.MapControllers();
 

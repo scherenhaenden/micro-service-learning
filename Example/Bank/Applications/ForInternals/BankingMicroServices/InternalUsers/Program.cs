@@ -23,8 +23,8 @@ var currentDirectory = Directory.GetCurrentDirectory();
 builder.Services.AddDbContextPool<DbContext, GenericContext>(options => options
     // replace with your connection string
     .UseLazyLoadingProxies().
-    UseSqlite("Data Source=/Users/edwardflores/Projects/Development/micro-service-learning/Example/Bank/Data/BankingSeeding.db"));
-
+    //UseSqlite("Data Source=/Users/edwardflores/Projects/Development/micro-service-learning/Example/Bank/Data/BankingSeeding.db"));
+    UseMySQL("Server=localhost; Port=13306;database=db;uid=root;pwd=password"));
 
 
 builder.Services.AddScoped<IUnitOfWorkV2, UnityOfWorkV2>();

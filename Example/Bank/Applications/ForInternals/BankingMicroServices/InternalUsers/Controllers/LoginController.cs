@@ -30,4 +30,33 @@ public class LoginController : Controller
         }
         return Ok(user);
     }
+    
+    // Create Method of http type get, allow anonymous route 'LoginEmployee' and accepts the parameters 'EmployeeId' and 'Password'
+    [AllowAnonymous]
+    [HttpGet]
+    [Route("LoginEmployee")]
+    public IActionResult LoginEmployee(string EmployeeId, string Password)
+    {
+        var user = _logicBusinessLogic.GetUserInformationByEmployeeIdAndPassword(EmployeeId, Password);
+        if (user == null)
+        {
+            return Unauthorized();
+        }
+        return Ok(user);
+    }
+    
+    // Create Method of http type get, allow anonymous route 'LoginCustomer' and accepts the parameters 'Email' and 'Password' 
+    // This method will be migrated to another service called UserClients
+    [AllowAnonymous]
+    [HttpGet]
+    [Route("LoginCustomer")]
+    public IActionResult LoginCustomer(string Email, string Password)
+    {
+        var user = _logicBusinessLogic.GetCustomerInformationByEmailAndPassword(Email, Password);
+        if (user == null)
+        {
+            return Unauthorized();
+        }
+        return Ok(user);
+    }
 }

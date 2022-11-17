@@ -12,6 +12,8 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.11" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.11" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
+        <PackageReference Include="MySql.Data" Version="8.0.31" />
+        <PackageReference Include="MySql.EntityFrameworkCore" Version="6.0.7" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>

@@ -16,6 +16,8 @@ export class JwtInterceptorService {
         //const account = this.sessionService.accountValue;
         //const isLoggedIn = account?.token;
 
+        console.log('JwtInterceptorService: intercept()');
+
         const isLogged = this.sessionService.isLoggedIn();
         const token = this.sessionService.getToken();
 

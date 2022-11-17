@@ -11,6 +11,9 @@ import { SessionService } from 'src/app/services/session/session.service';
 })
 export class LoginViewComponent implements OnInit {
 
+  // Variable to set if user is loging in as customer or employee
+  public isCustomer: boolean = true;
+
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
@@ -19,7 +22,8 @@ export class LoginViewComponent implements OnInit {
 
   public checkoutForm = this.formBuilder.group({
     email: '',
-    password: ''
+    password: '',
+    employeeid: ''
   });
 
 
@@ -59,17 +63,35 @@ export class LoginViewComponent implements OnInit {
     return false;
   }
 
-
-
   public async onSubmit(): Promise<void> {
 
     // Store in local storage for now (until we have a database)
     const email = this.checkoutForm.get('email')?.value;
     const password = this.checkoutForm.get('password')?.value;
+    const employeId = this.checkoutForm.get('employeeid')?.value;
+    console.log('employee id: ' + employeId);
 
-    if(email != null && email != undefined && password != null && password != undefined) {
-      await this.loginService.login(email, password);
+    if(this.isCustomer) {
+      // Call login customer
+      if(email != null && email != undefined && password != null && password != undefined) {
+        await this.loginService.loginCustomer(email, password);
+        this.goToDashboard();
+      }
+      return;
+    }
+
+    // Call login employee
+    if(employeId != null && employeId != undefined && password != null && password != undefined) {
+      await this.loginService.loginEmployee(employeId, password);
       this.goToDashboard();
+      return;
     }
   }
+
+  // Set login as employee or customer
+  public changeLoginEmployeeOrCustomer(): void {
+    this.isCustomer = !this.isCustomer;
+  }
+
+
 }

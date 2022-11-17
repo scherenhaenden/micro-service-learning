@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainSideBarComponent implements OnInit {
 
+
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
 }
+
+export const SIDEMENU = {
+  EMPLOYEES : "BA_TK_EMPLOYEES",
+};
+

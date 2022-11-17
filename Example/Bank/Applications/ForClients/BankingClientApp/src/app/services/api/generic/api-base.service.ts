@@ -11,9 +11,14 @@ export class ApiBaseService {
   constructor(private http: HttpClient) { }
 
   // Write method to execute a GET request WITH query parameters
-  public async get<T>(route: string, query?: HttpParams, host?: string): Promise<T> {
+  public async get<T>(route: string, query?: HttpParams, headers?: HttpHeaders, host?: string): Promise<T> {
+    const httpOptionsNew = {
+      headers: headers
+    };
     const url = host ? host + route : environment.apiHost + route;
-    return lastValueFrom(this.http.get<T>(url, { params: query }));
+
+    // Create call http get with url and query parameters and headers
+    return lastValueFrom(this.http.get<T>(url, { params: query, headers: headers }));
   }
 
 /*public add(a: number, b: number, c: number): number;

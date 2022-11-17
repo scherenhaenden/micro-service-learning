@@ -59,6 +59,7 @@ public class AddUsers
         userAdmin.FirstName = "Admin";
         userAdmin.LastName = "Admin";
         userAdmin.IsActive = true;
+        userAdmin.EmployeeId = "BA0001";
         
         
         listOfUsers.Add(userAdmin);
