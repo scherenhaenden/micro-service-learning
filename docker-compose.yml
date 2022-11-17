@@ -38,8 +38,15 @@ services:
       # Opens port 3306 on the container
       - '3306'
       # Where our data will be persisted
-    #volumes:
-    #  - my-db:/var/lib/mysql
+    volumes:
+      - my-db:/var/lib/mysql
+    networks:
+      - microservices-network-banking
 # Names our volume
 volumes:
   my-db:
+
+networks:
+  microservices-network-banking:
+    external:
+      name: microservices-network-banking
